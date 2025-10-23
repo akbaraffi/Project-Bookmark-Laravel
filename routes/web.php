@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+use App\Http\Controllers\BookmarkController;
 
-Route::get('/form', function () {
-    return view('form');
-});
 
-Route::get('/table', function () {
-    return view('table');
-});
+Route::get('/', fn() => view('bookmark.index'));
+Route::get('/table', [BookmarkController::class, 'index']);
+Route::get('/form',  [BookmarkController::class, 'create']);
+Route::post('/form/save', [BookmarkController::class, 'store']);
+Route::get('/form/edit/{bookmark}', [BookmarkController::class,'edit']);
+Route::put('/form/update/{bookmark}', [BookmarkController::class,'update']);
+Route::delete('/form/delete/{bookmark}', [BookmarkController::class,'destroy']);
+
