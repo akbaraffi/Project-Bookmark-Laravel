@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
-    public function index()
+    public function list()
     {
-        $bookmarks = Bookmark::orderBy('id', 'desc')->paginate(10);
+        $bookmarks = Bookmark::all();
         return view('bookmark.table', compact('bookmarks'));
     }
 
@@ -52,6 +52,6 @@ class BookmarkController extends Controller
     public function destroy(Bookmark $bookmark)
     {
         $bookmark->delete();
-        return back();
+        return redirect('/table');
     }
 }

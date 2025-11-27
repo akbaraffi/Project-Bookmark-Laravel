@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('content')
-<div class="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r bg-gradient-to-r from-slate-900 via-slate-800 via-30% to-slate-700">
+<div class="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-slate-900 via-slate-800 via-30% to-slate-700">
     <div class="bg-slate-200 p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Tambah Bookmark</h2>
 

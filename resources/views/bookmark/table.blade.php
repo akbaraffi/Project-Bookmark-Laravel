@@ -24,8 +24,8 @@
 
         <tbody class="text-gray-800">
           @foreach($bookmarks as $bm)
-          <tr class="bg-slate-300/30 hover:bg-slate-100">
-            <td class="px-4 py-3 border-b font-medium">{{ $bm->nama }}</td>
+          <tr class="bg-slate-300/30">
+            <td class="px-4 py-3 border-b">{{ $bm->nama }}</td>
             <td class="px-4 py-3 border-b">{{ $bm->kategori }}</td>
             <td class="px-4 py-3 border-b">
               <a href="{{ $bm->link }}" target="_blank"

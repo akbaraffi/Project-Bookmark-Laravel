@@ -6,7 +6,7 @@ use App\Http\Controllers\BookmarkController;
 
 
 Route::get('/', fn() => view('bookmark.index'));
-Route::get('/table', [BookmarkController::class, 'index']);
+Route::get('/table', [BookmarkController::class, 'list']);
 Route::get('/form',  [BookmarkController::class, 'create']);
 Route::post('/form/save', [BookmarkController::class, 'store']);
 Route::get('/form/edit/{bookmark}', [BookmarkController::class,'edit']);
