@@ -54,4 +54,15 @@ class BookmarkController extends Controller
         $bookmark->delete();
         return redirect('/table');
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->input('q');
+
+        $bookmarks = Bookmark::when($q, function ($query) use ($q) {
+            $query->where('nama', 'like', "%{$q}%");
+        })->get();
+
+        return view('bookmark.table', compact('bookmarks'));
+    }
 }

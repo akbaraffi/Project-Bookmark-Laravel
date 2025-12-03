@@ -12,4 +12,5 @@ Route::post('/form/save', [BookmarkController::class, 'store']);
 Route::get('/form/edit/{bookmark}', [BookmarkController::class,'edit']);
 Route::put('/form/update/{bookmark}', [BookmarkController::class,'update']);
 Route::delete('/form/delete/{bookmark}', [BookmarkController::class,'destroy']);
+Route::get('/search',[BookmarkController::class,'search']);
 

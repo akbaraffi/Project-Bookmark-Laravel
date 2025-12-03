@@ -10,6 +10,14 @@
       </a>
     </div>
 
+    <form action="{{ url('/search') }}" method="GET">
+      <div class="flex items-center px-4 my-2 rounded-lg gap-2 bg-slate-300 shadow-sm">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text" name="q" class="flex-1 px-2 py-1 my-2 rounded-lg bg-slate-300 focus:outline-0" placeholder="Cari berdasarkan nama" value="{{ request('q') }}">
+      </div>
+    </form>
+
     <div class="overflow-x-auto">
       <table class="min-w-full border border-slate-200 rounded-lg overflow-hidden" id="bookmarkTable">
         <thead class="bg-slate-300">
