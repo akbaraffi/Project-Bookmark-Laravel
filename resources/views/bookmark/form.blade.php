@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('content')
-<div class="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-slate-900 via-slate-800 via-30% to-slate-700">
+<div class="flex flex-col justify-center items-center min-h-screen bg-slate-800">
     <div class="bg-slate-200 p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Tambah Bookmark</h2>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="flex justify-between mt-6">
-                <a href="{{ url('/table ') }}" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
+                <a href="{{ url('/table') }}" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
                     Kembali
                 </a>
                 <button type="submit" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">

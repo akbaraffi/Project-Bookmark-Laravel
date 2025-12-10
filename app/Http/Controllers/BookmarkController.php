@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
+    public function index()
+    {
+        return view('bookmark.index');
+    }
+
     public function list()
     {
         $bookmarks = Bookmark::all();
@@ -18,16 +23,17 @@ class BookmarkController extends Controller
         return view('bookmark.form');
     }
 
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        $data = [
-            'nama'      => $request->input('nama'),
-            'kategori'  => $request->input('kategori'),
-            'link'      => $request->input('link'),
-            'deskripsi' => $request->input('deskripsi'),
-        ];
+        $request->validate([
+            'nama'      => 'required',
+            'kategori'  => 'required',
+            'link'      => 'required|url',
+            'deskripsi' => 'nullable',
+        ]);
 
-        Bookmark::create($data);
+        Bookmark::create($request->only(['nama', 'kategori', 'link', 'deskripsi']));
+
         return redirect('/table');
     }
 
@@ -38,18 +44,19 @@ class BookmarkController extends Controller
 
     public function update(Request $request, Bookmark $bookmark)
     {
-        $data = [
-            'nama'      => $request->input('nama'),
-            'kategori'  => $request->input('kategori'),
-            'link'      => $request->input('link'),
-            'deskripsi' => $request->input('deskripsi'),
-        ];
+        $request->validate([
+            'nama'      => 'required',
+            'kategori'  => 'required',
+            'link'      => 'required|url',
+            'deskripsi' => 'nullable',
+        ]);
 
-        $bookmark->update($data);
+        $bookmark->update($request->only(['nama', 'kategori', 'link', 'deskripsi']));
+
         return redirect('/table');
     }
 
-    public function destroy(Bookmark $bookmark)
+    public function delete(Bookmark $bookmark)
     {
         $bookmark->delete();
         return redirect('/table');
