@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBookmarkRequest;
+use App\Http\Requests\UpdateBookmarkRequest;
 
 class BookmarkController extends Controller
 {
@@ -20,38 +22,28 @@ class BookmarkController extends Controller
 
     public function create()
     {
-        return view('bookmark.form');
+        $categories = Bookmark::select('kategori')->distinct()->get();
+
+        return view('bookmark.form', compact('categories'));
     }
 
-    public function save(Request $request)
+    public function save(StoreBookmarkRequest $request)
     {
-        $request->validate([
-            'nama'      => 'required',
-            'kategori'  => 'required',
-            'link'      => 'required|url',
-            'deskripsi' => 'nullable',
-        ]);
-
-        Bookmark::create($request->only(['nama', 'kategori', 'link', 'deskripsi']));
+        Bookmark::create($request->validated());
 
         return redirect('/table');
     }
 
     public function edit(Bookmark $bookmark)
     {
-        return view('bookmark.edit', compact('bookmark'));
+        $categories = Bookmark::select('kategori')->distinct()->get();
+
+        return view('bookmark.edit', compact('bookmark', 'categories'));
     }
 
-    public function update(Request $request, Bookmark $bookmark)
+    public function update(UpdateBookmarkRequest $request, Bookmark $bookmark)
     {
-        $request->validate([
-            'nama'      => 'required',
-            'kategori'  => 'required',
-            'link'      => 'required|url',
-            'deskripsi' => 'nullable',
-        ]);
-
-        $bookmark->update($request->only(['nama', 'kategori', 'link', 'deskripsi']));
+        $bookmark->update($request->validated());
 
         return redirect('/table');
     }

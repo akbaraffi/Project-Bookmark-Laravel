@@ -49,7 +49,7 @@
             <td class="px-4 py-3 ">
               <div class="flex justify-center items-center gap-3">
                 <a href="{{ url('/form/edit/'.$bm->id) }}"
-                  class="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md text-sm">
+                  class="flex items-center gap-2 bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded-md text-sm">
                   Edit
                 </a>
 
